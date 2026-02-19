@@ -352,7 +352,7 @@ class OpenDSS:
                 return
 
             if size is None:
-                size = self.get_property(name, 'kWrated', element='Storage')
+                size = self.get_property(name, 'kWRated', element='Storage')
             if q is None:
                 q = 0
             # calculate power factor and percent charge/discharge
@@ -363,9 +363,9 @@ class OpenDSS:
 
             if p < 0:
                 self.run_command(
-                    f'edit {element}.{name} %discharge={p_pct:.4} pf={pf:.4} State=Discharging')
+                    f'edit {element}.{name} %Discharge={p_pct:.4} pf={pf:.4} State=Discharging')
             else:
-                self.run_command(f'edit {element}.{name} %charge={p_pct:.4} pf={pf:.4} State=Charging')
+                self.run_command(f'edit {element}.{name} %Charge={p_pct:.4} pf={pf:.4} State=Charging')
         else:
             raise OpenDSSException("Unknown element class:", element)
 
